@@ -2,7 +2,7 @@ import { useEffect } from 'react'
  import MovieListing from '../MovieListing/MovieListing'
 
  import { useDispatch } from 'react-redux'
- import {fetchMovies} from '../../features/movies/movieSlice'
+ import {fetchMovies ,fetchShows} from '../../features/movies/movieSlice'
 function Home() {
   const dispatch=useDispatch()
 
@@ -11,6 +11,7 @@ function Home() {
 
  
 dispatch(fetchMovies())
+dispatch(fetchShows())
 
   },[dispatch]);
   return (

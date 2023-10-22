@@ -3,7 +3,7 @@ import movieApi from'../../common/apis/movieApi'
 import { APIKey } from '../../common/apis/MovieApiKey'
 export const fetchMovies = createAsyncThunk('movies/fetchAsyncMovies',
 async ()=>{
-  const text='Harry'
+  const text='see'
 
   const res= await movieApi.get(`?apikey=${APIKey}&s=${text}&type=movie`)
   return res.data;
@@ -19,9 +19,17 @@ async ()=>{
 }
 
 )
+export const fetchDetails = createAsyncThunk('movies/fetchDetails',
+async (id)=>{
+ 
+
+  const res= await movieApi.get(`?apikey=${APIKey}&i=${id}&Plot=full`)
+  return res.data;
+})
 const initialState={
     movies:{},
     shows:{},
+    selectedMovie:{}
 }
 const movieSlice = createSlice({
 name:'movies',
@@ -43,7 +51,13 @@ extraReducers:{
   },
   [fetchMovies.rejected]:()=> {
     console.log('Rejected')
-  }
+  },
+  [fetchDetails.fulfilled]:(state,{payload})=> {
+    console.log('fetched seccessfuly')
+    state.selectedMovie=payload;
+ 
+
+  },
 
 }
  

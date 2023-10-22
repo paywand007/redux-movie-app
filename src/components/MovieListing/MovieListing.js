@@ -31,7 +31,7 @@ function MovieListing() {
   );
   return (
     <div className="movie-wrapper">
-    <div className="movie-list">
+    <div className="movie-show">
       <h2>Movies</h2>
       <div className="movie-container">{renderMovies}</div>
     </div>
